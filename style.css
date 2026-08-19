@@ -1,0 +1,204 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f3f7f6;
+  min-height: 100vh;
+  padding: 30px 15px;
+  color: #222;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+header h1 {
+  color: #087f73;
+  margin-bottom: 8px;
+}
+
+header p {
+  color: #666;
+}
+
+.form-section,
+.search-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+input {
+  flex: 1;
+  padding: 13px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  font-size: 15px;
+  outline: none;
+}
+
+input:focus {
+  border-color: #087f73;
+}
+
+button {
+  border: none;
+  border-radius: 7px;
+  padding: 12px 18px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#addBtn {
+  background: #087f73;
+  color: white;
+}
+
+#addBtn:hover {
+  background: #06675e;
+}
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.card {
+  background: #eef4f3;
+  padding: 18px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.card span {
+  display: block;
+  color: #555;
+  margin-bottom: 7px;
+}
+
+.card strong {
+  font-size: 28px;
+  color: #087f73;
+}
+
+.card.present strong {
+  color: #16833e;
+}
+
+.card.absent strong {
+  color: #d33a3a;
+}
+
+.table-section {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  padding: 13px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+th {
+  background: #087f73;
+  color: white;
+}
+
+.status-btn {
+  min-width: 95px;
+  color: white;
+}
+
+.status-present {
+  background: #16833e;
+}
+
+.status-absent {
+  background: #d33a3a;
+}
+
+.edit-btn {
+  background: #e6a817;
+  color: white;
+}
+
+.delete-btn {
+  background: #c0392b;
+  color: white;
+  margin-left: 5px;
+}
+
+.empty {
+  text-align: center;
+  padding: 20px;
+  color: #777;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.save {
+  background: #087f73;
+  color: white;
+}
+
+.clear {
+  background: #444;
+  color: white;
+}
+
+.message {
+  text-align: center;
+  margin-top: 12px;
+  color: #087f73;
+  min-height: 20px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 18px;
+  }
+
+  .form-section {
+    flex-direction: column;
+  }
+
+  .summary {
+    grid-template-columns: 1fr;
+  }
+
+  th, td {
+    padding: 9px 5px;
+    font-size: 13px;
+  }
+
+  .delete-btn {
+    margin-left: 0;
+    margin-top: 5px;
+  }
+}
