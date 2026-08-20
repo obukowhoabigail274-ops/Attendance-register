@@ -19,31 +19,38 @@ function addStudent() {
   displayStudents();
 }
 
+function markAttendance(index) {
+  students[index].present = !students[index].present;
+  displayStudents();
+}
+
 function displayStudents() {
   const list = document.getElementById("studentList");
   const count = document.getElementById("studentCount");
 
   list.innerHTML = "";
 
+  let presentCount = 0;
+
   students.forEach((student, index) => {
+    if (student.present) {
+      presentCount++;
+    }
+
     const row = document.createElement("tr");
 
     row.innerHTML = `
       <td>${index + 1}</td>
       <td>${student.name}</td>
       <td>
-        <input type="checkbox"
-          ${student.present ? "checked" : ""}
-          onchange="markAttendance(${index}, this.checked)">
+        <button onclick="markAttendance(${index})">
+          ${student.present ? "Present ✓" : "Mark Present"}
+        </button>
       </td>
     `;
 
     list.appendChild(row);
   });
 
-  count.textContent = students.length;
-}
-
-function markAttendance(index, present) {
-  students[index].present = present;
+  count.textContent = presentCount;
 }
