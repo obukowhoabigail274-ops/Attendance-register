@@ -2,6 +2,7 @@ mark present let students = [];
 Luke present 
 precious present 
 rose absent 
+chizy present 
 function addStudent() {
   const input = document.getElementById("studentName");
   const name = input.value.trim();
