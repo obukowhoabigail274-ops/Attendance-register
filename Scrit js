@@ -8,3 +8,29 @@ function updateStudentCount() {
 }
 
 document.addEventListener("DOMContentLoaded", updateStudentCount);
+const students = document.querySelectorAll(".student");
+const studentCount = document.getElementById("student-count");
+
+function updateStudentCount() {
+  let present = 0;
+
+  students.forEach(student => {
+    const checkbox = student.querySelector("input[type='checkbox']");
+
+    if (checkbox && checkbox.checked) {
+      present++;
+    }
+  });
+
+  studentCount.textContent = present;
+}
+
+students.forEach(student => {
+  const checkbox = student.querySelector("input[type='checkbox']");
+
+  if (checkbox) {
+    checkbox.addEventListener("change", updateStudentCount);
+  }
+});
+
+updateStudentCount();
