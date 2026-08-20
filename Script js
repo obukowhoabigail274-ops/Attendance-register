@@ -1,55 +1,49 @@
-const studentName = document.getElementById("studentName");
-const studentList = document.getElementById("studentList");
-const addStudentBtn = document.getElementById("addStudentBtn");
-const totalStudents = document.getElementById("totalStudents");
-
 let students = [];
 
-function updateTotal() {
-  totalStudents.textContent = students.length;
-}
-
-function displayStudents() {
-  studentList.innerHTML = "";
-
-  students.forEach((student, index) => {
-    const row = document.createElement("div");
-
-    row.innerHTML = `
-      <span>${index + 1}. ${student}</span>
-      <button onclick="removeStudent(${index})">Remove</button>
-    `;
-
-    studentList.appendChild(row);
-  });
-
-  updateTotal();
-}
-
 function addStudent() {
-  const name = studentName.value.trim();
+  const input = document.getElementById("studentName");
+  const name = input.value.trim();
 
   if (name === "") {
-    alert("Please enter a student's name");
+    alert("Please enter a student name.");
     return;
   }
 
-  students.push(name);
-  studentName.value = "";
+  students.push({
+    name: name,
+    present: false
+  });
+
+  input.value = "";
   displayStudents();
 }
 
-function removeStudent(index) {
-  students.splice(index, 1);
+function markAttendance(index) {
+  students[index].present = !students[index].present;
   displayStudents();
 }
 
-addStudentBtn.addEventListener("click", addStudent);
+function displayStudents() {
+  const list = document.getElementById("studentList");
+  const count = document.getElementById("studentCount");
 
-studentName.addEventListener("keypress", function(event) {
-  if (event.key === "Enter") {
-    addStudent();
-  }
-});
+  list.innerHTML = "";
 
-updateTotal();
+  students.forEach((student, index) => {
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+      <td>${index + 1}</td>
+      <td>${student.name}</td>
+      <td>
+        <button onclick="markAttendance(${index})">
+          ${student.present ? "Present" : "Absent"}
+        </button>
+      </td>
+    `;
+
+    list.appendChild(row);
+  });
+
+  count.textContent = students.length;
+}
