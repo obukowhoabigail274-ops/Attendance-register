@@ -1,0 +1,55 @@
+const studentName = document.getElementById("studentName");
+const studentList = document.getElementById("studentList");
+const addStudentBtn = document.getElementById("addStudentBtn");
+const totalStudents = document.getElementById("totalStudents");
+
+let students = [];
+
+function updateTotal() {
+  totalStudents.textContent = students.length;
+}
+
+function displayStudents() {
+  studentList.innerHTML = "";
+
+  students.forEach((student, index) => {
+    const row = document.createElement("div");
+
+    row.innerHTML = `
+      <span>${index + 1}. ${student}</span>
+      <button onclick="removeStudent(${index})">Remove</button>
+    `;
+
+    studentList.appendChild(row);
+  });
+
+  updateTotal();
+}
+
+function addStudent() {
+  const name = studentName.value.trim();
+
+  if (name === "") {
+    alert("Please enter a student's name");
+    return;
+  }
+
+  students.push(name);
+  studentName.value = "";
+  displayStudents();
+}
+
+function removeStudent(index) {
+  students.splice(index, 1);
+  displayStudents();
+}
+
+addStudentBtn.addEventListener("click", addStudent);
+
+studentName.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    addStudent();
+  }
+});
+
+updateTotal();
