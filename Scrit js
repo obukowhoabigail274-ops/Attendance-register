@@ -1,0 +1,10 @@
+function updateStudentCount() {
+    const students = document.querySelectorAll(".student");
+    const count = document.getElementById("studentCount");
+
+    if (count) {
+        count.textContent = students.length;
+    }
+}
+
+document.addEventListener("DOMContentLoaded", updateStudentCount);
