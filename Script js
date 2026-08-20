@@ -1,5 +1,7 @@
-let students = [];
-
+mark present let students = [];
+Luke present 
+precious present 
+rose absent 
 function addStudent() {
   const input = document.getElementById("studentName");
   const name = input.value.trim();
