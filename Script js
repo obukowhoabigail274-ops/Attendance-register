@@ -1,14 +1,12 @@
-mark present let students = [];
-Luke present 
-precious present 
-rose absent 
-chizy present 
+
+let students = [];
+
 function addStudent() {
   const input = document.getElementById("studentName");
   const name = input.value.trim();
 
   if (name === "") {
-    alert("Please enter a student name.");
+    alert("Please enter a student name");
     return;
   }
 
@@ -18,11 +16,6 @@ function addStudent() {
   });
 
   input.value = "";
-  displayStudents();
-}
-
-function markAttendance(index) {
-  students[index].present = !students[index].present;
   displayStudents();
 }
 
@@ -39,9 +32,9 @@ function displayStudents() {
       <td>${index + 1}</td>
       <td>${student.name}</td>
       <td>
-        <button onclick="markAttendance(${index})">
-          ${student.present ? "Present" : "Absent"}
-        </button>
+        <input type="checkbox"
+          ${student.present ? "checked" : ""}
+          onchange="markAttendance(${index}, this.checked)">
       </td>
     `;
 
@@ -49,4 +42,8 @@ function displayStudents() {
   });
 
   count.textContent = students.length;
+}
+
+function markAttendance(index, present) {
+  students[index].present = present;
 }
